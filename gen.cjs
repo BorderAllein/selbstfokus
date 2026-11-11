@@ -28,11 +28,24 @@ const wc = a => Math.max(3, Math.round(JSON.stringify([a.kurz, a.body, a.faq]).r
 function md(s, a) {
   s = fixAmp(s);
   s = s.replace(/\{\{a:([a-z0-9-]+)\|([^}]+)\}\}/g, (_, sl, t) => BY[sl] ? `<a href="/artikel/${sl}/">${t}</a>` : t);
-  if (a) s = s.replace(/\{(\d+(?:,\d+)*)\}/g, (_, n) => '<sup class="q">' + n.split(',').map(i => `<a href="#q${i}" aria-label="Quelle ${i}">${i}</a>`).join(',') + '</sup>');
+  if (a) s = s.replace(/\{(\d+(?:,\d+)*)\}/g, (_, n) => '<sup class="q">' + n.split(',').map(i => `<a href="#q${i}" aria-label="Quelle ${i}" title="${esc((SRC[a.sources[i - 1]] || { t: '' }).t.slice(0, 160))}">${i}</a>`).join(',') + '</sup>');
   return s;
 }
 const write = (rel, content) => { const p = path.join(ROOT, rel); fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, content); };
 const pil = id => PILLARS.find(p => p.id === id);
+const ACC = { selbstfuehrung: '#1f4d3a', selbstwert: '#a4552d', 'emotionale-kompetenz': '#6b3f5e', persoenlichkeitsentwicklung: '#3b5683', 'beziehungen-kommunikation': '#8a4350', 'stress-erholung': '#1f6670', 'sinn-ziele': '#8a6208', verbundenheit: '#5b6b2a' };
+const ico = d => '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>';
+const ICON = {
+  selbstfuehrung: ico('<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>'),
+  selbstwert: ico('<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>'),
+  'emotionale-kompetenz': ico('<path d="M2 12c2.5-5 5-5 7.5 0s5 5 7.5 0 3-3 5-2"/><path d="M2 18c2.5-4 5-4 7.5 0s5 4 7.5 0 3-2.5 5-1.5" opacity=".5"/>'),
+  persoenlichkeitsentwicklung: ico('<path d="M12 21v-9"/><path d="M12 12c0-4 3-7 8-7 0 5-3 8-8 7z"/><path d="M12 15c0-3-2-5-6-5 0 4 2 6 6 5z"/>'),
+  'beziehungen-kommunikation': ico('<circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/>'),
+  'stress-erholung': ico('<path d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z"/>'),
+  'sinn-ziele': ico('<path d="M5 21V4"/><path d="M5 5h12l-2.5 4 2.5 4H5"/>'),
+  verbundenheit: ico('<circle cx="6" cy="7" r="2.3"/><circle cx="18" cy="7" r="2.3"/><circle cx="12" cy="18" r="2.3"/><path d="M8 8l3 8M16 8l-3 8M8.3 7h7.4"/>')
+};
+const QUESTIONS = ARTICLES.flatMap(a => a.body.filter(b => b.think).flatMap(b => b.think.map(q => ({ q: q.replace(/\{\d+(?:,\d+)*\}/g, ''), u: '/artikel/' + a.slug + '/', t: a.title, c: ACC[a.pillar] }))));
 
 // ---------- Layout ----------
 const LOGO = '<svg class="logo" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="16" cy="16" r="7" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".55"/><circle cx="16" cy="16" r="3" fill="var(--amber)"/></svg>';
@@ -63,10 +76,13 @@ ${noindex ? '<meta name="robots" content="noindex">' : '<meta name="robots" cont
 <link rel="preload" href="/assets/fonts/fraunces-600-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts.css">
 <link rel="stylesheet" href="/assets/site.css?v=${STAND}">
+<link rel="stylesheet" href="/assets/design.css?v=${STAND}">
+<script>try{var t=localStorage.getItem("sf-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 ${jsonld.map(j => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join('\n')}
 </head>
 <body>
 <a class="skip" href="#main">Zum Inhalt springen</a>
+<div class="progress" aria-hidden="true"><i></i></div>
 <div class="notice">Informationsangebot. Keine Diagnose, keine Therapie, keine ärztliche Beratung. In einer Krise: Telefonseelsorge kostenlos <a href="tel:116123">116 123</a>, Notruf <a href="tel:112">112</a>.</div>
 <header class="top">
  <div class="wrap top-in">
@@ -75,6 +91,7 @@ ${jsonld.map(j => `<script type="application/ld+json">${JSON.stringify(j)}</scri
    ${nav.map(([h, t, id]) => `<a href="${h}"${active === id ? ' aria-current="page"' : ''}>${t}</a>`).join('')}
    <a href="/suche/" class="nav-search"${active === 'suche' ? ' aria-current="page"' : ''}>Suche</a>
   </nav>
+  <button class="themebtn" type="button" aria-label="Darstellung wechseln: hell oder dunkel" title="Hell / Dunkel"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z"/></svg></button>
   <button class="burger" aria-expanded="false" aria-controls="nav" aria-label="Menü öffnen"><span></span><span></span></button>
  </div>
 </header>
@@ -97,7 +114,7 @@ ${nl ? NLBOX : ''}
 }
 const crumbs = items => ({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items.map(([n, u], i) => ({ '@type': 'ListItem', position: i + 1, name: n, item: SITE + u })) });
 const crumbHtml = items => `<nav class="crumbs" aria-label="Brotkrumen">${items.map(([n, u], i) => i < items.length - 1 ? `<a href="${u}">${esc(n)}</a>` : `<span>${esc(n)}</span>`).join(' / ')}</nav>`;
-const cardHtml = a => `<article class="card"><p class="kicker"><a href="/thema/${a.pillar}/">${pil(a.pillar).name}</a> · ${a.sub}</p><h3><a href="/artikel/${a.slug}/">${esc(a.title)}</a></h3><p>${esc(a.description)}</p><p class="meta">${AUTHORS[a.author].name} · ${wc(a)} Min. Lesezeit · ${dfmt(a.publishedAt)}</p></article>`;
+const cardHtml = a => `<article class="card" style="--accent:${ACC[a.pillar]}"><p class="kicker"><a href="/thema/${a.pillar}/">${pil(a.pillar).name}</a> · ${a.sub}</p><h3><a href="/artikel/${a.slug}/">${esc(a.title)}</a></h3><p>${esc(a.description)}</p><p class="meta">${AUTHORS[a.author].name} · ${wc(a)} Min. Lesezeit · ${dfmt(a.publishedAt)}</p></article>`;
 const orgLd = { '@type': 'Organization', '@id': SITE + '/#org', name: 'BA Entertainment', url: SITE + '/', address: { '@type': 'PostalAddress', streetAddress: 'Alleestraße 15', postalCode: '42781', addressLocality: 'Haan', addressCountry: 'DE' }, email: 'info@cogether.de' };
 
 // ---------- Artikel ----------
@@ -127,13 +144,14 @@ function articlePage(a) {
   ];
   if (a.faq && a.faq.length) ld.push({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: a.faq.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a.replace(/\{\d+(?:,\d+)*\}/g, '').replace(/<[^>]*>/g, '') } })) });
   const nets = (NET[a.slug] || { links: [] });
-  const html0 = `<article class="article wrap-narrow">
+  const html0 = `<article class="article" style="--accent:${ACC[a.pillar]}">
 ${crumbHtml(crumb)}
 <header class="a-head">
  <p class="kicker"><a href="/thema/${pl.id}/">${pl.name}</a> · ${a.sub}</p>
  <h1>${esc(a.title)}</h1>
  <p class="lede">${md(a.description)}</p>
  <p class="meta">Von <a href="/autoren/#${a.author}">${au.name}</a> · ${wc(a)} Min. Lesezeit · Stand: ${dfmt(a.updatedAt || a.publishedAt)}</p>
+ <div class="tools" role="group" aria-label="Leseoptionen"><button type="button" class="tool" data-act="focus" aria-pressed="false">◎ Fokusmodus</button><button type="button" class="tool" data-act="smaller" aria-label="Schrift kleiner">A−</button><button type="button" class="tool" data-act="bigger" aria-label="Schrift größer">A+</button></div>
 </header>
 <section class="kurz" aria-labelledby="kurz-h"><h2 id="kurz-h">Kurz gesagt</h2><ul>${a.kurz.map(k => `<li>${md(k, a)}</li>`).join('')}</ul></section>
 ${toc.length > 2 ? `<nav class="toc" aria-label="Inhalt"><h2>Inhalt</h2><ol>${toc.map(t => `<li><a href="#${t.id}">${md(t.t)}</a></li>`).join('')}</ol></nav>` : ''}
@@ -158,7 +176,7 @@ function pillarPage(p) {
   const arts = ARTICLES.filter(a => a.pillar === p.id);
   const crumb = [['Start', '/'], [p.name, `/thema/${p.id}/`]];
   const subs = p.subs.map(s => ({ s, list: arts.filter(a => a.sub === s) }));
-  const body = `<div class="wrap">${crumbHtml(crumb)}<header class="page-head"><p class="kicker">Säule ${PILLARS.indexOf(p) + 1} von ${PILLARS.length}</p><h1>${p.name}</h1><p class="lede">${p.intro}</p></header>
+  const body = `<div class="wrap pillar-page" style="--accent:${ACC[p.id]}">${crumbHtml(crumb)}<header class="page-head"><span class="pico">${ICON[p.id]}</span><p class="kicker">Säule ${PILLARS.indexOf(p) + 1} von ${PILLARS.length}</p><h1>${p.name}</h1><p class="lede">${p.intro}</p></header>
 <div class="chips" aria-label="Unterthemen">${p.subs.map(s => `<span class="chip">${s}</span>`).join('')}</div>
 ${arts.length ? subs.filter(x => x.list.length).map(x => `<section class="sub"><h2>${x.s}</h2><div class="cards">${x.list.map(cardHtml).join('')}</div></section>`).join('') : '<p>Die ersten Beiträge erscheinen in Kürze.</p>'}
 <aside class="box wide"><p>Alle Beiträge nennen ihre Quellen und trennen Forschungsstand von Alltagsideen. Mehr dazu unter <a href="/redaktion/">Redaktion und Quellen</a>.</p></aside></div>`;
@@ -166,9 +184,10 @@ ${arts.length ? subs.filter(x => x.list.length).map(x => `<section class="sub"><
 }
 function homePage() {
   const latest = ARTICLES.slice(0, 6);
-  const body = `<section class="hero"><div class="wrap hero-in"><div><p class="kicker">Magazin für Selbstführung und Persönlichkeitsentwicklung</p><h1>${CLAIM.split('. ').map(x => x.replace(/\.$/, '')).join('.<br>') + '.'}</h1><p class="lede">${NAME} erklärt, wie Menschen denken, fühlen, entscheiden und sich verändern. Sorgfältig recherchiert, mit Quellen, ohne Heilversprechen und ohne Verkaufsdruck.</p><form class="hsearch" action="/suche/" role="search"><label for="hq" class="sr">Suche</label><input id="hq" name="q" type="search" placeholder="Zum Beispiel: Impulskontrolle, Selbstwert, Bindung" autocomplete="off"><button class="btn" type="submit">Suchen</button></form></div>
+  const body = `<section class="hero" id="hero"><div class="wrap hero-in"><div><p class="kicker">Magazin für Selbstführung und Persönlichkeitsentwicklung</p><h1>${CLAIM.split('. ').map((x, i) => `<span class="ln" style="--d:${i * 0.2}s">${x.replace(/\.$/, '')}.</span>`).join('')}</h1><p class="lede">${NAME} erklärt, wie Menschen denken, fühlen, entscheiden und sich verändern. Sorgfältig recherchiert, mit Quellen, ohne Heilversprechen und ohne Verkaufsdruck.</p><form class="hsearch" action="/suche/" role="search"><label for="hq" class="sr">Suche</label><input id="hq" name="q" type="search" placeholder="Zum Beispiel: Impulskontrolle, Selbstwert, Bindung" autocomplete="off"><button class="btn" type="submit">Suchen</button></form></div>
 <svg class="hero-art" viewBox="0 0 320 320" aria-hidden="true"><circle cx="160" cy="160" r="150" fill="none" stroke="var(--pine)" stroke-width="2" opacity=".25"/><circle cx="160" cy="160" r="110" fill="none" stroke="var(--pine)" stroke-width="2" opacity=".4"/><circle cx="160" cy="160" r="70" fill="none" stroke="var(--pine)" stroke-width="2.4" opacity=".65"/><circle cx="160" cy="160" r="30" fill="var(--pine)"/><circle cx="160" cy="160" r="11" fill="var(--amber)"/></svg></div></section>
-<section class="wrap block"><h2 class="sec">Acht Säulen</h2><div class="pillars">${PILLARS.map((p, i) => { const n = ARTICLES.filter(a => a.pillar === p.id).length; return `<a class="pillar" href="/thema/${p.id}/"><span class="num">${i + 1}</span><h3>${p.name}</h3><p>${p.short}</p><span class="count">${n} ${n === 1 ? 'Beitrag' : 'Beiträge'}</span></a>`; }).join('')}</div></section>
+<section class="wrap block"><ul class="stats"><li><strong>${ARTICLES.length}</strong> Beiträge</li><li><strong>${PILLARS.length}</strong> Säulen</li><li><strong>${Object.keys(AUTHORS).length}</strong> Autor:innen</li><li><strong>100 %</strong> mit Quellen</li></ul><h2 class="sec">Acht Säulen</h2><div class="pillars">${PILLARS.map((p, i) => { const n = ARTICLES.filter(a => a.pillar === p.id).length; return `<a class="pillar" style="--accent:${ACC[p.id]}" href="/thema/${p.id}/"><span class="pico">${ICON[p.id]}</span><h3>${p.name}</h3><p>${p.short}</p><span class="count">${n} ${n === 1 ? 'Beitrag' : 'Beiträge'}</span></a>`; }).join('')}</div></section>
+<section class="wrap block"><div class="qcard" id="qcard" aria-live="polite"><p class="kicker">Frage zum Nachdenken</p><p class="qtext" id="qtext">Was beschäftigt Dich gerade am meisten?</p><p class="qsrc"><a id="qlink" href="/thema/selbstfuehrung/">Zu den Beiträgen</a> <button type="button" id="qnext" class="tool">Nächste Frage ↻</button></p><script type="application/json" id="qdata">${JSON.stringify(QUESTIONS).replace(/</g, "\\u003c")}</script></div></section>
 <section class="wrap block"><h2 class="sec">Neu im Magazin</h2><div class="cards">${latest.map(cardHtml).join('')}</div></section>
 <section class="band"><div class="wrap principles"><div><h3>Belegt statt behauptet</h3><p>Jede Aussage stützt sich auf Studien, Fachgesellschaften oder öffentliche Stellen. Die Quellen stehen am Ende jedes Beitrags.</p></div><div><h3>Information, keine Behandlung</h3><p>Wir erklären Zusammenhänge. Wir stellen keine Diagnosen und versprechen keine Heilung.</p></div><div><h3>Unabhängig und offen</h3><p>Herausgeber ist BA Entertainment. Wer schreibt und wer dahintersteht, steht transparent auf der Seite <a href="/redaktion/">Redaktion</a>.</p></div></div></section>
 <section class="wrap block"><h2 class="sec">Autor:innen</h2><div class="authors">${Object.entries(AUTHORS).map(([k, a]) => `<a class="auth" href="/autoren/#${k}"><span class="av" aria-hidden="true">${a.name[0]}</span><span><strong>${a.name}</strong><br><span class="role">${a.role}</span></span></a>`).join('')}</div></section>`;

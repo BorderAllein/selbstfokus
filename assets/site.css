@@ -3,15 +3,15 @@
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.125rem;line-height:1.7;text-rendering:optimizeLegibility}
 img,svg{max-width:100%}
-a{color:var(--pine);text-decoration-thickness:1px;text-underline-offset:3px}
-a:hover{color:var(--pine-d);text-decoration-thickness:2px}
+a{color:var(--link);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--hc);text-decoration-thickness:2px}
 :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:3px}
 .skip{position:absolute;left:-999px;top:0;background:var(--pine);color:#fff;padding:.6rem 1rem;z-index:100}
 .skip:focus{left:8px;top:8px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
 .wrap-narrow{max-width:740px;margin:0 auto;padding:0 20px}
-h1,h2,h3{font-family:var(--head);font-weight:600;line-height:1.2;color:var(--pine-d);letter-spacing:-.01em}
+h1,h2,h3{font-family:var(--head);font-weight:600;line-height:1.2;color:var(--hc);letter-spacing:-.01em}
 h1{font-size:clamp(2rem,5vw,3.1rem);margin:.2em 0 .4em}
 h2{font-size:1.65rem;margin:2.2em 0 .6em}
 h3{font-size:1.25rem}
@@ -25,7 +25,7 @@ h3{font-size:1.25rem}
 .notice a{color:#fff;font-weight:500}
 .top{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
 .top-in{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
-.brand{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--head);font-weight:700;font-size:1.4rem;color:var(--pine-d);text-decoration:none}
+.brand{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--head);font-weight:700;font-size:1.4rem;color:var(--hc);text-decoration:none}
 .brand .logo{color:var(--pine)}
 .nav{display:flex;gap:4px;align-items:center;font-family:var(--ui);font-size:.9rem;font-weight:500}
 .nav a{color:var(--ink);text-decoration:none;padding:.5rem .7rem;border-radius:8px}
@@ -59,7 +59,7 @@ h3{font-size:1.25rem}
 .cards.one{grid-template-columns:1fr}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px}
 .card h3{margin:.1rem 0 .5rem;font-size:1.25rem}
-.card h3 a{text-decoration:none;color:var(--pine-d)}
+.card h3 a{text-decoration:none;color:var(--hc)}
 .card h3 a:hover{text-decoration:underline}
 .card p{margin:.3rem 0;font-size:1rem;line-height:1.55}
 .card .meta{margin-top:.8rem}
@@ -104,7 +104,7 @@ sup.q a{text-decoration:none;color:var(--amber-d);font-weight:500;padding:0 1px}
 .faq{margin-top:2.4rem}
 .faq details{border-top:1px solid var(--line);padding:.2rem 0}
 .faq details:last-of-type{border-bottom:1px solid var(--line)}
-.faq summary{cursor:pointer;font-family:var(--head);font-size:1.15rem;color:var(--pine-d);padding:.8rem 0;list-style-position:outside}
+.faq summary{cursor:pointer;font-family:var(--head);font-size:1.15rem;color:var(--hc);padding:.8rem 0;list-style-position:outside}
 .faq details p{margin:0 0 1rem}
 .help{background:#fdf1dc;border:1px solid #e8cf9f;border-radius:var(--r);padding:6px 22px 14px;margin:2.4rem 0 1.6rem;font-size:1rem}
 .help h2{font-size:1.1rem;margin:.9rem 0 .3rem}
