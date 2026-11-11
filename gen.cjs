@@ -18,6 +18,22 @@ const BY = Object.fromEntries(ARTICLES.map(a => [a.slug, a]));
 const GLOSS = require('./content/glossar.cjs');
 const NET = Object.assign({}, require('./content/netzwerk.cjs'), require('./content/netzwerk2.cjs'));
 const SOCIAL = [['Instagram', 'https://www.instagram.com/cogether_official'], ['TikTok', 'https://www.tiktok.com/@borderallein_official'], ['YouTube', 'https://www.youtube.com/@cogether'], ['LinkedIn', 'https://de.linkedin.com/in/cogether']];
+// Fallback-Verlinkung: Artikel ohne Eintrag in content/netzwerk*.cjs bekommen 3 bis 4 Standardlinks je Säule. Jeder Artikel erhält mindestens einen Link auf cogether.de.
+const WK = s => 'https://cogether.de/wissen/' + s + '/', OBS = s => 'https://guidanceobservatory.com/analyses/' + s + '/';
+const L = (p, t, u) => ({ p, t, u });
+const POD = L('Podcast Border Allein', 'Podcast Border Allein: Gespräche über alte Muster, Beziehungen und Selbstführung', 'https://borderallein.de/podcast/');
+const ZU = L('Ziele umsetzen', 'Ziele umsetzen: Wissen fürs praktische Tun', 'https://zieleumsetzen.de/thema/ziele-setzen/');
+const FB = {
+  selbstfuehrung: [L('CoGether Wissen', 'Selbstführung lernen: Was es bedeutet und wie Du anfängst', WK('selbstfuehrung-lernen-was-es-bedeutet-und-wie-du-anfaengst')), L('Guidance Observatory', 'Selbstführung (Self-Leadership) in der Forschung', OBS('selbstfuehrung-self-leadership')), ZU, POD],
+  selbstwert: [L('CoGether Wissen', 'Ich bin nicht gut genug: Woher das Gefühl kommt und was hilft', WK('ich-bin-nicht-gut-genug-woher-das-gefuehl-kommt-und-was-hilft')), L('CoGether Wissen', 'Selbstmitgefühl lernen', WK('selbstmitgefuehl-lernen-warum-weniger-selbstkritik-dich-nicht-schwaecher-sondern-handlungsfaehiger-machen-kann')), L('Guidance Observatory', 'Selbstmitgefühl und psychische Belastung', OBS('selbstmitgefuehl-und-psychische-belastung')), L('Podcast Gedankenkotze', 'Gedankenkotze: Folgen zum Thema Selbstwert', 'https://gedankenkotze.de/thema/selbstwert/')],
+  'emotionale-kompetenz': [L('CoGether Wissen', 'Emotionale Intelligenz steigern: Übungen für den Alltag', WK('emotionale-intelligenz-steigern-uebungen-fuer-den-alltag')), L('Guidance Observatory', 'Emotionsregulation: Welche Strategien wirken', OBS('emotionsregulation-welche-strategien-wirken')), L('Podcast Gedankenkotze', 'Gedankenkotze: Folgen zum Thema Gefühle', 'https://gedankenkotze.de/thema/gefuehle/')],
+  persoenlichkeitsentwicklung: [L('CoGether Wissen', 'Muster erkennen und verändern', WK('muster-erkennen-und-veraendern-immer-gleich-reagieren')), L('Guidance Observatory', 'Growth Mindset: Was zwei Meta-Analysen zeigen', OBS('growth-mindset-was-zwei-meta-analysen-zeigen')), ZU, POD],
+  'beziehungen-kommunikation': [L('CoGether Wissen', 'Emotionale Intelligenz in der Beziehung: Konflikte, Nähe und Gespräche', WK('emotionale-intelligenz-in-der-beziehung-konflikte-naehe-und-gespraeche')), L('Podcast Gedankenkotze', 'Gedankenkotze: Folgen zum Thema Beziehungen', 'https://gedankenkotze.de/thema/beziehungen/'), POD],
+  'stress-erholung': [L('CoGether Wissen', 'Burnout erkennen: Anzeichen, Ursachen und Wege zurück zu Kräften', WK('burnout-erkennen-anzeichen-ursachen-und-wie-du-wieder-zu-kraeften-kommst')), L('Guidance Observatory', 'Erholung von der Arbeit: Was 54 Stichproben zeigen', OBS('erholung-von-der-arbeit-was-54-stichproben-zeigen')), L('Podcast Gedankenkotze', 'Gedankenkotze: Folgen zum Thema Erschöpfung', 'https://gedankenkotze.de/thema/erschoepfung/')],
+  'sinn-ziele': [L('CoGether Wissen', 'Orientierungslos und Sinnkrise: Was dahintersteckt und wie Du Richtung findest', WK('orientierungslos-sinnkrise-lebenskrise-was-dahintersteckt-und-wie-du-wieder-richtung-findest')), L('Guidance Observatory', 'Selbstkonkordante Ziele', OBS('selbstkonkordante-ziele-warum-passende-ziele-wohlbefinden-staerken')), ZU, POD],
+  verbundenheit: [L('CoGether Wissen', 'Einsam trotz Menschen: Warum Du Dich allein fühlst und was hilft', WK('einsam-trotz-menschen-warum-du-dich-allein-fuehlst-und-was-hilft')), L('Podcast Gedankenkotze', 'Gedankenkotze: Folgen zum Thema Beziehungen', 'https://gedankenkotze.de/thema/beziehungen/'), POD]
+};
+const FALLBACK = a => (FB[a.pillar] || FB.selbstfuehrung).slice();
 const NLBOX = `<section class="nl wrap-narrow" aria-label="CoGether-Newsletter"><h2>Der CoGether-Newsletter</h2><p class="small">Impulse und neue Beiträge per E-Mail. Das Formular wird von cogether.de geladen (Double-Opt-in, jederzeit abbestellbar).</p><iframe id="nlf" title="CoGether-Newsletter anmelden" src="https://cogether.de/newsletter-embed/selbstfokus/" loading="lazy" height="330" style="width:100%;border:0"></iframe><script>window.addEventListener('message',function(e){if(e.origin==='https://cogether.de'&&e.data&&e.data.cgnl){var f=document.getElementById('nlf');if(f)f.style.height=(e.data.h+8)+'px'}});</script></section>`;
 
 // ---------- Hilfen ----------
@@ -143,7 +159,8 @@ function articlePage(a) {
     crumbs(crumb)
   ];
   if (a.faq && a.faq.length) ld.push({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: a.faq.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a.replace(/\{\d+(?:,\d+)*\}/g, '').replace(/<[^>]*>/g, '') } })) });
-  const nets = (NET[a.slug] || { links: [] });
+  const nets = Object.assign({ links: [] }, NET[a.slug] || { links: FALLBACK(a) });
+  if (!nets.links.some(l => /^https:\/\/cogether\.de\//.test(l.u))) nets.links = nets.links.concat([FB[a.pillar][0]]);
   const html0 = `<article class="article" style="--accent:${ACC[a.pillar]}">
 ${crumbHtml(crumb)}
 <header class="a-head">
@@ -213,6 +230,8 @@ function pages() {
 <p>Vor jedem Beitrag prüfen wir, welche Fragen Menschen zum Thema tatsächlich suchen, und ob das Thema bei uns oder im Netzwerk schon behandelt wird. Recherche und Textentwurf entstehen mit KI-Unterstützung. Jede Quelle wird vor der Veröffentlichung am Original geprüft. Die redaktionelle Verantwortung liegt bei BA Entertainment.</p>
 <h2>Abgrenzung zu CoGether</h2>
 <p>${NAME} ist ein neutrales Lesemagazin. Die Autor:innen arbeiten als Coaches bei <a href="https://cogether.de/" rel="noopener">CoGether</a>. Am Ende von Beiträgen verweisen wir auf ihr Angebot. Der Inhalt der Beiträge richtet sich nach der Quellenlage, nicht nach dem Angebot. Coaching ist keine Therapie.</p>
+<h2>Verlinkung im Netzwerk</h2>
+<p>Jeder Beitrag verweist am Ende auf passende Seiten im CoGether-Netzwerk (Block „Im Netzwerk weiterlesen“) und auf ein Erstgespräch bei den Autor:innen. Die Links liegen zentral in der Link-Map des Portals. Beiträge ohne eigenen Eintrag erhalten automatisch Standardlinks je Säule, mindestens einen auf cogether.de. Wir verlinken nur Seiten, die erreichbar sind, mit beschreibendem Linktext.</p>
 <h2>Fehler melden</h2>
 <p>Wenn Dir ein Fehler auffällt oder eine Quelle nicht mehr stimmt, schreib an <a href="mailto:info@cogether.de">info@cogether.de</a>. Wir prüfen und korrigieren.</p>
 <h2>Wer steht dahinter?</h2>

@@ -22,6 +22,7 @@ const NETWORK = [
   { name: 'CoGether für Organisationen', url: 'https://business.cogether.de/', role: 'Level You Up für Organisationen: Entwicklungsprogramm für Fachkräfte, Ehrenamtliche, Teams und Führungskräfte.' },
   { name: 'ADHS Begleitung', url: 'https://adhsbegleitung.de/', role: 'Themenspezifisches Wissensportal zu ADHS bei Erwachsenen, mit Begleitung durch Angie.' },
   { name: 'Borderline für alle', url: 'https://xn--borderlinefralle-tzb.de/', role: 'Themenspezifisches Wissensportal zu Borderline für Betroffene und Angehörige.' },
+  { name: 'Ziele umsetzen', url: 'https://zieleumsetzen.de/', role: 'Wissensportal fürs praktische Tun: Ziele formulieren, planen, dranbleiben, Rückschläge meistern, mit Ziel-Werkstatt.' },
   { name: 'Guidance Observatory', url: 'https://guidanceobservatory.com/', role: 'Unabhängiges Fach- und Forschungsportal zur Infrastruktur professioneller Begleitung: Analysen, Marktdaten und offene Datensätze.' },
   { name: 'Podcast Border Allein', url: 'https://borderallein.de/podcast/', role: 'Svens Podcast über Borderline, alte Muster, Beziehungen und Selbstführung.' },
   { name: 'Podcast Gedankenkotze', url: 'https://gedankenkotze.de/', role: 'Angies Podcast über ADHS, Hochsensibilität, Overthinking und Erschöpfung.' }
