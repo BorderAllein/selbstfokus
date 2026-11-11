@@ -34,6 +34,7 @@
   if(focusIO){focusIO.disconnect();focusIO=null;$$('.prose>.cur').forEach(function(x){x.classList.remove('cur')})}
   if(on&&'IntersectionObserver' in window){focusIO=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('cur',e.isIntersecting)})},{rootMargin:'-38% 0px -38% 0px'});$$('.prose>*').forEach(function(x){focusIO.observe(x)})}}
  $$('.tool[data-act]').forEach(function(t){t.addEventListener('click',function(){var a=t.getAttribute('data-act');if(a==='focus')focusOn(!b.classList.contains('focus'));if(a==='bigger')setFs(fs+.0625);if(a==='smaller')setFs(fs-.0625)})});
+ $$('.stats strong').forEach(function(el){var n=parseInt(el.textContent,10);if(!n||reduce)return;var suf=el.textContent.replace(/[0-9]/g,''),t0=null;el.textContent='0'+suf;var go=function(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/1100);el.textContent=Math.round(n*(1-Math.pow(1-p,3)))+suf;if(p<1)requestAnimationFrame(go)};if('IntersectionObserver' in window){var o=new IntersectionObserver(function(es){if(es[0].isIntersecting){requestAnimationFrame(go);o.disconnect()}});o.observe(el)}else el.textContent=n+suf});
  var qd=$('#qdata');
  if(qd){var Q=[];try{Q=JSON.parse(qd.textContent)}catch(e){}
   var qt=$('#qtext'),ql=$('#qlink'),qn=$('#qnext'),last=-1;
