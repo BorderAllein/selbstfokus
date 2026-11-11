@@ -184,7 +184,7 @@ ${nets.links.length ? `<section class="netz"><h2>Im Netzwerk weiterlesen</h2><ul
 ${more.length ? `<section class="more"><h2>Weiterlesen</h2><div class="cards">${more.map(cardHtml).join('')}</div></section>` : ''}
 </article>`;
   let html = html0;
-  for (const [ph, u] of (nets.ctx || [])) { const i = html.indexOf('<div class="prose">'); const j = html.indexOf(ph, i); if (j < 0) throw new Error('ctx fehlt: ' + a.slug + ' ' + ph); html = html.slice(0, j) + `<a href="${u}" rel="noopener">${ph}</a>` + html.slice(j + ph.length); }
+  for (const [ph, u] of (nets.ctx || [])) { const i = html.indexOf('<div class="prose">'); const j = html.indexOf(ph, i); if (j < 0) { console.warn('WARN ctx fehlt: ' + a.slug + ' ' + ph); continue; } html = html.slice(0, j) + `<a href="${u}" rel="noopener">${ph}</a>` + html.slice(j + ph.length); }
   write(`artikel/${a.slug}/index.html`, layout({ title: a.title, description: a.description, path: `/artikel/${a.slug}/`, body: html, type: 'article', jsonld: ld, active: a.pillar, nl: true }));
 }
 
