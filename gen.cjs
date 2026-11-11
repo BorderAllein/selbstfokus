@@ -92,9 +92,9 @@ ${noindex ? '<meta name="robots" content="noindex">' : '<meta name="robots" cont
 <link rel="preload" href="/assets/fonts/source-serif-4-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/fraunces-600-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts.css">
-<link rel="stylesheet" href="/assets/site.css?v=${STAND}d">
-<link rel="stylesheet" href="/assets/design.css?v=${STAND}d">
-<link rel="stylesheet" href="/assets/theme.css?v=${STAND}d">
+<link rel="stylesheet" href="/assets/site.css?v=${STAND}e">
+<link rel="stylesheet" href="/assets/design.css?v=${STAND}e">
+<link rel="stylesheet" href="/assets/theme.css?v=${STAND}e">
 ${jsonld.map(j => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join('\n')}
 </head>
 <body>
@@ -124,7 +124,7 @@ ${nl ? NLBOX : ''}
  </div>
  <div class="wrap foot-note"><p><strong>Wichtig:</strong> Die Inhalte dienen der Information. Sie ersetzen keine Diagnose, keine ärztliche und keine psychotherapeutische Behandlung. Bei akuter Krise erreichst Du die Telefonseelsorge kostenlos unter <a href="tel:116123">116 123</a>, im Notfall den Notruf <a href="tel:112">112</a>.</p><p class="follow"><strong>Folge uns:</strong> ${SOCIAL.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join(' · ')}</p><p class="small">© ${new Date().getFullYear()} BA Entertainment · ${NAME} · Stand: ${dfmt(STAND)}</p></div>
 </footer>
-<script src="/assets/site.js?v=${STAND}d" defer></script>
+<script src="/assets/site.js?v=${STAND}e" defer></script>
 </body>
 </html>`;
 }

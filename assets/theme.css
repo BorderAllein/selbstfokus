@@ -127,3 +127,11 @@ body.focus .prose>.cur{opacity:1;filter:none}
 .auth:hover .fz-a,.authorbox:hover .fz-a{animation-duration:6s}
 .auth:hover .fz-l,.authorbox:hover .fz-l{animation:pull .9s cubic-bezier(.2,.7,.2,1) both}
 @media(prefers-reduced-motion:reduce){.fz-a,.fz-b,.fz-l{animation:none}}
+/* Startseite: Autor:innen groß mit Fokusscheibe */
+.authors{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.authors .auth{flex-direction:column;text-align:center;padding:30px 18px 24px;gap:14px;align-items:center}
+.authors .auth .av{width:132px;height:132px}
+.authors .auth .fz-l{font-size:3.4rem}
+.authors .auth strong{font:700 1.25rem var(--head);color:var(--hc)}
+.authors .auth .role{display:block;margin-top:.2rem}
+.authors .auth:hover{background:var(--paper2)}
