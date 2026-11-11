@@ -49,7 +49,7 @@ function md(s, a) {
 }
 const write = (rel, content) => { const p = path.join(ROOT, rel); fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, content); };
 const pil = id => PILLARS.find(p => p.id === id);
-const ACC = { selbstfuehrung: '#1f4d3a', selbstwert: '#a4552d', 'emotionale-kompetenz': '#6b3f5e', persoenlichkeitsentwicklung: '#3b5683', 'beziehungen-kommunikation': '#8a4350', 'stress-erholung': '#1f6670', 'sinn-ziele': '#8a6208', verbundenheit: '#5b6b2a' };
+const ACC = { selbstfuehrung: '#1d1c1a', selbstwert: '#a4552d', 'emotionale-kompetenz': '#6b3f5e', persoenlichkeitsentwicklung: '#3b5683', 'beziehungen-kommunikation': '#8a4350', 'stress-erholung': '#1f6670', 'sinn-ziele': '#8a6208', verbundenheit: '#5b6b2a' };
 const ico = d => '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>';
 const ICON = {
   selbstfuehrung: ico('<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>'),
@@ -86,14 +86,14 @@ ${noindex ? '<meta name="robots" content="noindex">' : '<meta name="robots" cont
 <meta property="og:locale" content="de_DE">
 <meta property="og:image" content="${SITE}/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#1f4d3a">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/source-serif-4-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/fraunces-600-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts.css">
-<link rel="stylesheet" href="/assets/site.css?v=${STAND}">
-<link rel="stylesheet" href="/assets/design.css?v=${STAND}">
-<script>try{var t=localStorage.getItem("sf-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/assets/site.css?v=${STAND}b">
+<link rel="stylesheet" href="/assets/design.css?v=${STAND}b">
+<link rel="stylesheet" href="/assets/theme.css?v=${STAND}b">
 ${jsonld.map(j => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join('\n')}
 </head>
 <body>
@@ -107,7 +107,6 @@ ${jsonld.map(j => `<script type="application/ld+json">${JSON.stringify(j)}</scri
    ${nav.map(([h, t, id]) => `<a href="${h}"${active === id ? ' aria-current="page"' : ''}>${t}</a>`).join('')}
    <a href="/suche/" class="nav-search"${active === 'suche' ? ' aria-current="page"' : ''}>Suche</a>
   </nav>
-  <button class="themebtn" type="button" aria-label="Darstellung wechseln: hell oder dunkel" title="Hell / Dunkel"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z"/></svg></button>
   <button class="burger" aria-expanded="false" aria-controls="nav" aria-label="Menü öffnen"><span></span><span></span></button>
  </div>
 </header>
@@ -124,7 +123,7 @@ ${nl ? NLBOX : ''}
  </div>
  <div class="wrap foot-note"><p><strong>Wichtig:</strong> Die Inhalte dienen der Information. Sie ersetzen keine Diagnose, keine ärztliche und keine psychotherapeutische Behandlung. Bei akuter Krise erreichst Du die Telefonseelsorge kostenlos unter <a href="tel:116123">116 123</a>, im Notfall den Notruf <a href="tel:112">112</a>.</p><p class="follow"><strong>Folge uns:</strong> ${SOCIAL.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join(' · ')}</p><p class="small">© ${new Date().getFullYear()} BA Entertainment · ${NAME} · Stand: ${dfmt(STAND)}</p></div>
 </footer>
-<script src="/assets/site.js?v=${STAND}" defer></script>
+<script src="/assets/site.js?v=${STAND}b" defer></script>
 </body>
 </html>`;
 }
@@ -258,7 +257,7 @@ function machine() {
   write('.nojekyll', '');
   write('search-index.json', JSON.stringify(ARTICLES.map(a => ({ t: a.title, u: `/artikel/${a.slug}/`, d: a.description, p: pil(a.pillar).name, s: a.sub, k: (a.keywords || []).join(' ') }))));
   write('llms.txt', `# ${NAME}\n\n> ${DESC} Themen: Selbstführung, Selbstwert, emotionale Kompetenz, Persönlichkeitsentwicklung, Beziehungen und Kommunikation. Keine Diagnosen, keine Heilversprechen. Herausgeber: BA Entertainment, Alleestraße 15, 42781 Haan. Kontakt: info@cogether.de. Stand: ${dfmt(STAND)}.\n\n## Säulen\n\n${PILLARS.map(p => `- [${p.name}](${SITE}/thema/${p.id}/): ${p.meta}`).join('\n')}\n\n## Artikel\n\n${ARTICLES.map(a => `- [${a.title}](${SITE}/artikel/${a.slug}/): ${a.description}`).join('\n')}\n\n## Redaktion\n\n- [Redaktion und Quellen](${SITE}/redaktion/): Grundsätze, Quellenauswahl, Abgrenzung zu CoGether.\n- [Autor:innen](${SITE}/autoren/): ${Object.values(AUTHORS).map(a => `${a.name} (${a.role})`).join('; ')}.\n- [Glossar](${SITE}/glossar/)\n\n## Die CoGether-Welt\n\n${NETWORK.map(n => `- [${n.name}](${n.url}): ${n.role}`).join('\n')}\n`);
-  write('favicon.svg', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#f6efe0"/><circle cx="16" cy="16" r="11" fill="none" stroke="#1f4d3a" stroke-width="2.4"/><circle cx="16" cy="16" r="5.5" fill="none" stroke="#1f4d3a" stroke-width="1.8" opacity=".55"/><circle cx="16" cy="16" r="2.6" fill="#c9822b"/></svg>');
+  write('favicon.svg', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#ffffff"/><circle cx="16" cy="16" r="11" fill="none" stroke="#1d1c1a" stroke-width="2.4"/><circle cx="16" cy="16" r="5.5" fill="none" stroke="#1d1c1a" stroke-width="1.8" opacity=".55"/><circle cx="16" cy="16" r="2.6" fill="#1d1c1a"/></svg>');
 }
 
 // ---------- Build ----------
