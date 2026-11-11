@@ -113,3 +113,17 @@ body.focus .prose>.cur{opacity:1;filter:none}
 .foot .brand,.foot .brand .logo{color:#fff}
 .foot .small,.foot-note .small{color:#a9c4ca}
 .nl{border-top:1px solid var(--line)}
+/* Autoren-Fokuszeichen: der Buchstabe entsteht aus dem Sucher */
+.av{position:relative;display:inline-grid;place-items:center;background:transparent!important;color:var(--pine)!important;width:56px;height:56px;border-radius:0;box-shadow:none!important;flex:none}
+.auth .av{width:54px;height:54px}
+.authorbox .av{width:76px;height:76px;box-shadow:none!important}
+.authorbox.big .av{width:84px;height:84px}
+.av .fz{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.fz-d{fill:var(--pine)}
+.fz-a{transform-origin:32px 32px;animation:spin 28s linear infinite}
+.fz-b{transform-origin:32px 32px;animation:spin 6s linear infinite}
+.fz-l{position:relative;font:700 1.35rem/1 var(--head);color:#fff;animation:pull .9s cubic-bezier(.2,.7,.2,1) both}
+.authorbox .fz-l{font-size:1.9rem}
+.auth:hover .fz-a,.authorbox:hover .fz-a{animation-duration:6s}
+.auth:hover .fz-l,.authorbox:hover .fz-l{animation:pull .9s cubic-bezier(.2,.7,.2,1) both}
+@media(prefers-reduced-motion:reduce){.fz-a,.fz-b,.fz-l{animation:none}}
