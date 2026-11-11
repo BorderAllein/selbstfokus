@@ -16,7 +16,7 @@ for (const f of fs.readdirSync(path.join(ROOT, 'content')).filter(f => /^article
 const ARTICLES = ALL.filter(a => !a.publishedAt || a.publishedAt <= TODAY).sort((a, b) => (b.publishedAt || '').localeCompare(a.publishedAt || '') || a.slug.localeCompare(b.slug));
 const BY = Object.fromEntries(ARTICLES.map(a => [a.slug, a]));
 const GLOSS = require('./content/glossar.cjs');
-const NET = require('./content/netzwerk.cjs');
+const NET = Object.assign({}, require('./content/netzwerk.cjs'), require('./content/netzwerk2.cjs'));
 const SOCIAL = [['Instagram', 'https://www.instagram.com/cogether_official'], ['TikTok', 'https://www.tiktok.com/@borderallein_official'], ['YouTube', 'https://www.youtube.com/@cogether'], ['LinkedIn', 'https://de.linkedin.com/in/cogether']];
 const NLBOX = `<section class="nl wrap-narrow" aria-label="CoGether-Newsletter"><h2>Der CoGether-Newsletter</h2><p class="small">Impulse und neue Beiträge per E-Mail. Das Formular wird von cogether.de geladen (Double-Opt-in, jederzeit abbestellbar).</p><iframe id="nlf" title="CoGether-Newsletter anmelden" src="https://cogether.de/newsletter-embed/selbstfokus/" loading="lazy" height="330" style="width:100%;border:0"></iframe><script>window.addEventListener('message',function(e){if(e.origin==='https://cogether.de'&&e.data&&e.data.cgnl){var f=document.getElementById('nlf');if(f)f.style.height=(e.data.h+8)+'px'}});</script></section>`;
 
@@ -39,7 +39,7 @@ const LOGO = '<svg class="logo" viewBox="0 0 32 32" width="30" height="30" aria-
 function layout({ title, description, path: p, body, type = 'website', jsonld = [], noindex = false, active = '', nl = false }) {
   const url = SITE + p;
   const full = title.includes(NAME) ? title : `${title} | ${NAME}`;
-  const nav = [['/thema/selbstfuehrung/', 'Selbstführung', 'selbstfuehrung'], ['/thema/selbstwert/', 'Selbstwert', 'selbstwert'], ['/thema/emotionale-kompetenz/', 'Emotionen', 'emotionale-kompetenz'], ['/thema/persoenlichkeitsentwicklung/', 'Persönlichkeit', 'persoenlichkeitsentwicklung'], ['/thema/beziehungen-kommunikation/', 'Beziehungen', 'beziehungen-kommunikation']];
+  const nav = [['/thema/selbstfuehrung/', 'Selbstführung', 'selbstfuehrung'], ['/thema/selbstwert/', 'Selbstwert', 'selbstwert'], ['/thema/emotionale-kompetenz/', 'Emotionen', 'emotionale-kompetenz'], ['/thema/persoenlichkeitsentwicklung/', 'Persönlichkeit', 'persoenlichkeitsentwicklung'], ['/thema/beziehungen-kommunikation/', 'Beziehungen', 'beziehungen-kommunikation'], ['/thema/stress-erholung/', 'Stress', 'stress-erholung'], ['/thema/sinn-ziele/', 'Sinn', 'sinn-ziele'], ['/thema/verbundenheit/', 'Verbundenheit', 'verbundenheit']];
   return `<!doctype html>
 <html lang="de">
 <head>
@@ -158,7 +158,7 @@ function pillarPage(p) {
   const arts = ARTICLES.filter(a => a.pillar === p.id);
   const crumb = [['Start', '/'], [p.name, `/thema/${p.id}/`]];
   const subs = p.subs.map(s => ({ s, list: arts.filter(a => a.sub === s) }));
-  const body = `<div class="wrap">${crumbHtml(crumb)}<header class="page-head"><p class="kicker">Säule ${PILLARS.indexOf(p) + 1} von 5</p><h1>${p.name}</h1><p class="lede">${p.intro}</p></header>
+  const body = `<div class="wrap">${crumbHtml(crumb)}<header class="page-head"><p class="kicker">Säule ${PILLARS.indexOf(p) + 1} von ${PILLARS.length}</p><h1>${p.name}</h1><p class="lede">${p.intro}</p></header>
 <div class="chips" aria-label="Unterthemen">${p.subs.map(s => `<span class="chip">${s}</span>`).join('')}</div>
 ${arts.length ? subs.filter(x => x.list.length).map(x => `<section class="sub"><h2>${x.s}</h2><div class="cards">${x.list.map(cardHtml).join('')}</div></section>`).join('') : '<p>Die ersten Beiträge erscheinen in Kürze.</p>'}
 <aside class="box wide"><p>Alle Beiträge nennen ihre Quellen und trennen Forschungsstand von Alltagsideen. Mehr dazu unter <a href="/redaktion/">Redaktion und Quellen</a>.</p></aside></div>`;
@@ -168,7 +168,7 @@ function homePage() {
   const latest = ARTICLES.slice(0, 6);
   const body = `<section class="hero"><div class="wrap hero-in"><div><p class="kicker">Magazin für Selbstführung und Persönlichkeitsentwicklung</p><h1>${CLAIM.split('. ').map(x => x.replace(/\.$/, '')).join('.<br>') + '.'}</h1><p class="lede">${NAME} erklärt, wie Menschen denken, fühlen, entscheiden und sich verändern. Sorgfältig recherchiert, mit Quellen, ohne Heilversprechen und ohne Verkaufsdruck.</p><form class="hsearch" action="/suche/" role="search"><label for="hq" class="sr">Suche</label><input id="hq" name="q" type="search" placeholder="Zum Beispiel: Impulskontrolle, Selbstwert, Bindung" autocomplete="off"><button class="btn" type="submit">Suchen</button></form></div>
 <svg class="hero-art" viewBox="0 0 320 320" aria-hidden="true"><circle cx="160" cy="160" r="150" fill="none" stroke="var(--pine)" stroke-width="2" opacity=".25"/><circle cx="160" cy="160" r="110" fill="none" stroke="var(--pine)" stroke-width="2" opacity=".4"/><circle cx="160" cy="160" r="70" fill="none" stroke="var(--pine)" stroke-width="2.4" opacity=".65"/><circle cx="160" cy="160" r="30" fill="var(--pine)"/><circle cx="160" cy="160" r="11" fill="var(--amber)"/></svg></div></section>
-<section class="wrap block"><h2 class="sec">Fünf Säulen</h2><div class="pillars">${PILLARS.map((p, i) => { const n = ARTICLES.filter(a => a.pillar === p.id).length; return `<a class="pillar" href="/thema/${p.id}/"><span class="num">${i + 1}</span><h3>${p.name}</h3><p>${p.short}</p><span class="count">${n} ${n === 1 ? 'Beitrag' : 'Beiträge'}</span></a>`; }).join('')}</div></section>
+<section class="wrap block"><h2 class="sec">Acht Säulen</h2><div class="pillars">${PILLARS.map((p, i) => { const n = ARTICLES.filter(a => a.pillar === p.id).length; return `<a class="pillar" href="/thema/${p.id}/"><span class="num">${i + 1}</span><h3>${p.name}</h3><p>${p.short}</p><span class="count">${n} ${n === 1 ? 'Beitrag' : 'Beiträge'}</span></a>`; }).join('')}</div></section>
 <section class="wrap block"><h2 class="sec">Neu im Magazin</h2><div class="cards">${latest.map(cardHtml).join('')}</div></section>
 <section class="band"><div class="wrap principles"><div><h3>Belegt statt behauptet</h3><p>Jede Aussage stützt sich auf Studien, Fachgesellschaften oder öffentliche Stellen. Die Quellen stehen am Ende jedes Beitrags.</p></div><div><h3>Information, keine Behandlung</h3><p>Wir erklären Zusammenhänge. Wir stellen keine Diagnosen und versprechen keine Heilung.</p></div><div><h3>Unabhängig und offen</h3><p>Herausgeber ist BA Entertainment. Wer schreibt und wer dahintersteht, steht transparent auf der Seite <a href="/redaktion/">Redaktion</a>.</p></div></div></section>
 <section class="wrap block"><h2 class="sec">Autor:innen</h2><div class="authors">${Object.entries(AUTHORS).map(([k, a]) => `<a class="auth" href="/autoren/#${k}"><span class="av" aria-hidden="true">${a.name[0]}</span><span><strong>${a.name}</strong><br><span class="role">${a.role}</span></span></a>`).join('')}</div></section>`;

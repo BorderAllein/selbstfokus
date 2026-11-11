@@ -9,17 +9,24 @@
 - [Emotionale Kompetenz](https://selbstfokus.de/thema/emotionale-kompetenz/): Emotionale Kompetenz: Gefühle verstehen, benennen und regulieren. Studien, Strategien und ihre Grenzen.
 - [Persönlichkeitsentwicklung](https://selbstfokus.de/thema/persoenlichkeitsentwicklung/): Persönlichkeitsentwicklung: Wie stabil ist Persönlichkeit, was verändert sich, und was sagen Studien zu Mindset und Veränderung.
 - [Beziehungen und Kommunikation](https://selbstfokus.de/thema/beziehungen-kommunikation/): Beziehungen und Kommunikation: Bindung, Konflikte, Zuhören, Nähe und Distanz. Was die Forschung zeigt, mit Quellen.
+- [Stress und Erholung](https://selbstfokus.de/thema/stress-erholung/): Stress und Erholung: Abschalten nach der Arbeit, Mikropausen, Perfektionismus, Resilienz. Studien erklärt, mit Quellen.
+- [Sinn, Werte und Ziele](https://selbstfokus.de/thema/sinn-ziele/): Sinn, Werte und Ziele: Was Studien zu Lebenssinn, Zielsetzung und Zielerreichung zeigen, mit Quellen.
+- [Verbundenheit und Zugehörigkeit](https://selbstfokus.de/thema/verbundenheit/): Verbundenheit und Einsamkeit: Was Forschung über soziale Beziehungen und Gesundheit zeigt, mit Quellen.
 
 ## Artikel
 
 - [Big Five: Wie stabil ist Persönlichkeit, und was verändert sich?](https://selbstfokus.de/artikel/big-five-persoenlichkeit-veraendert-sich/): Die fünf Persönlichkeitsdimensionen erklärt und was Meta-Analysen mit über 240.000 Teilnehmenden zu Stabilität und Veränderung im Lebensverlauf zeigen.
 - [Bindungsstile bei Erwachsenen: Was die Forschung sagt](https://selbstfokus.de/artikel/bindungsstile-erwachsene-forschung/): Sicher, vermeidend, ängstlich: Was Bindungsstile sind, wie Hazan und Shaver sie auf Partnerschaften übertrugen und wie stabil sie nach Meta-Analysen sind.
+- [Einsamkeit: Was sie ist, wie sie wirkt und warum Alleinsein etwas anderes ist](https://selbstfokus.de/artikel/einsamkeit-was-die-forschung-zeigt/): Einsamkeit ist nicht einfach Alleinsein. Was Hawkley und Cacioppo über Wahrnehmung, Wachsamkeit, Schlaf und Gesundheit zeigen, und was das für den Umgang damit heißt.
 - [Emotionsregulation: Welche Strategien helfen und welche nicht](https://selbstfokus.de/artikel/emotionsregulation-strategien/): Neubewertung, Ablenkung, Unterdrückung: Was Meta-Analysen zur Wirksamkeit von Emotionsregulation zeigen und warum Unterdrücken nicht gleich Unterdrücken ist.
 - [Entscheidungen treffen: Wenn zu viel Auswahl lähmt](https://selbstfokus.de/artikel/entscheidungen-treffen-zu-viel-auswahl/): Macht mehr Auswahl unzufrieden? Was Studien zu Choice Overload, Maximierern und Zufriedenheit zeigen, und was Dir im Alltag beim Entscheiden helfen kann.
+- [Erholung nach der Arbeit: Warum Abschalten mehr ist als Freizeit](https://selbstfokus.de/artikel/erholung-nach-der-arbeit-abschalten/): Vier Formen der Erholung nach Feierabend und was eine Meta-Analyse mit 26.592 Beschäftigten über Abschalten, Entspannung, Kontrolle und Müdigkeit zeigt.
 - [Gefühle benennen: Warum Worte für Gefühle entlasten können](https://selbstfokus.de/artikel/gefuehle-benennen-affect-labeling/): Was passiert im Gehirn, wenn Du ein Gefühl in Worte fasst? Affect Labeling erklärt: Studienlage, Grenzen und eine einfache Alltagsübung ohne Heilsversprechen.
 - [Impulskontrolle verbessern: Was die Forschung zu Selbstkontrolle zeigt](https://selbstfokus.de/artikel/impulskontrolle-verbessern/): Was Impulskontrolle ist, was der Marshmallow-Test wirklich zeigt und warum Wenn-Dann-Pläne in Studien helfen. Mit Quellen und Alltagsfragen.
+- [Perfektionismus und Burnout: Warum Streben und Sorge verschieden wirken](https://selbstfokus.de/artikel/perfektionismus-und-burnout-streben-und-sorge/): Perfektionismus ist nicht gleich Perfektionismus: Eine Meta-Analyse mit 43 Studien trennt Streben nach Hohem von der Sorge, Fehler zu machen, und findet nur bei Letzterem ein Burnout-Risiko.
 - [Selbstwertgefühl: Wie es sich entwickelt und was es bewirkt](https://selbstfokus.de/artikel/selbstwertgefuehl-staerken-was-die-forschung-sagt/): Wie sich das Selbstwertgefühl über das Leben verändert, was hohes Selbstwertgefühl tatsächlich bewirkt und warum bloßes Aufbauen nicht reicht. Mit Studien und Quellen.
 - [Selbstwirksamkeit: Der Glaube, Herausforderungen bewältigen zu können](https://selbstfokus.de/artikel/selbstwirksamkeit-staerken/): Was Selbstwirksamkeit nach Bandura bedeutet, woraus sie entsteht, wie sie gemessen wird und was sie mit Leistung zu tun hat. Mit Studien und Quellen.
+- [Sinn im Leben: Was zehn Langzeitstudien über Lebenssinn und Gesundheit zeigen](https://selbstfokus.de/artikel/sinn-im-leben-was-studien-zeigen/): Menschen mit starkem Lebenssinn hatten in zehn Langzeitstudien ein geringeres Sterberisiko. Was die Meta-Analyse mit 136.265 Teilnehmenden zeigt und was sie nicht beweist.
 - [Streiten in der Beziehung: Was die Paarforschung über Konflikte zeigt](https://selbstfokus.de/artikel/streiten-in-der-beziehung-was-paarforschung-zeigt/): Ist Streiten normal? Was eine 14-Jahres-Studie von John Gottman und Robert Levenson über Konflikte zeigt und wie Stress Beziehungen belasten kann. Mit Quellen.
 - [Verantwortung übernehmen: Was Kontrollüberzeugung bedeutet](https://selbstfokus.de/artikel/verantwortung-kontrollueberzeugung/): Was Menschen glauben, beeinflussen zu können, prägt ihr Handeln. Locus of Control nach Rotter erklärt, mit Befunden zu 40 Jahren Wandel und ehrlichen Grenzen.
 - [Growth Mindset: Was belegt ist und was übertrieben wurde](https://selbstfokus.de/artikel/wachstums-mindset-was-belegt-ist/): Hilft der Glaube an Entwicklung wirklich? Was Meta-Analysen und eine große Studie mit US-Schüler:innen zum Growth Mindset zeigen, und wo die Grenzen liegen.
@@ -27,7 +34,7 @@
 ## Redaktion
 
 - [Redaktion und Quellen](https://selbstfokus.de/redaktion/): Grundsätze, Quellenauswahl, Abgrenzung zu CoGether.
-- [Autor:innen](https://selbstfokus.de/autoren/): Angie (Wegbegleiterin und Mentorin); Michelle (Traumasensible Coachin); Kerstin (Coaching für Klarheit und Perspektive).
+- [Autor:innen](https://selbstfokus.de/autoren/): Sven (Gründer, systemischer Coach und Mentor); Angie (Wegbegleiterin und Mentorin); Michelle (Traumasensible Coachin); Kerstin (Coaching für Klarheit und Perspektive).
 - [Glossar](https://selbstfokus.de/glossar/)
 
 ## Die CoGether-Welt
