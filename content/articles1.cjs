@@ -1,7 +1,7 @@
 // Säule Selbstführung (Autor: Sven). Fakten nur aus den unter "sources" genannten Quellen; {n} verweist auf die n-te Quelle.
 module.exports = [
 {
-  slug: 'impulskontrolle-verbessern', pillar: 'selbstfuehrung', sub: 'Impulskontrolle', author: 'sven', publishedAt: '2026-11-11',
+  slug: 'impulskontrolle-verbessern', pillar: 'selbstfuehrung', sub: 'Impulskontrolle', author: 'michelle', publishedAt: '2026-11-11',
   title: 'Impulskontrolle verbessern: Was die Forschung zu Selbstkontrolle zeigt',
   description: 'Was Impulskontrolle ist, was der Marshmallow-Test wirklich zeigt und warum Wenn-Dann-Pläne in Studien helfen. Mit Quellen und Alltagsfragen.',
   keywords: ['Impulskontrolle', 'Impulskontrolle lernen', 'Selbstkontrolle', 'Wenn-Dann-Plan', 'Marshmallow-Test'],
@@ -43,7 +43,7 @@ module.exports = [
   ]
 },
 {
-  slug: 'entscheidungen-treffen-zu-viel-auswahl', pillar: 'selbstfuehrung', sub: 'Entscheidungen', author: 'sven', publishedAt: '2026-11-11',
+  slug: 'entscheidungen-treffen-zu-viel-auswahl', pillar: 'selbstfuehrung', sub: 'Entscheidungen', author: 'kerstin', publishedAt: '2026-11-11',
   title: 'Entscheidungen treffen: Wenn zu viel Auswahl lähmt',
   description: 'Macht mehr Auswahl unzufrieden? Was Studien zu Choice Overload, Maximierern und Zufriedenheit zeigen, und was Dir im Alltag beim Entscheiden helfen kann.',
   keywords: ['Entscheidungen treffen', 'Entscheidungsschwierigkeiten', 'Choice Overload', 'Maximizer Satisficer', 'zu viele Optionen'],
@@ -79,7 +79,7 @@ module.exports = [
   ]
 },
 {
-  slug: 'verantwortung-kontrollueberzeugung', pillar: 'selbstfuehrung', sub: 'Verantwortung', author: 'sven', publishedAt: '2026-11-11',
+  slug: 'verantwortung-kontrollueberzeugung', pillar: 'selbstfuehrung', sub: 'Verantwortung', author: 'angie', publishedAt: '2026-11-11',
   title: 'Verantwortung übernehmen: Was Kontrollüberzeugung bedeutet',
   description: 'Was Menschen glauben, beeinflussen zu können, prägt ihr Handeln. Locus of Control nach Rotter erklärt, mit Befunden zu 40 Jahren Wandel und ehrlichen Grenzen.',
   keywords: ['Verantwortung übernehmen', 'Kontrollüberzeugung', 'Locus of Control', 'internal external', 'Rotter'],

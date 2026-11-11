@@ -151,3 +151,4 @@ sup.q a{text-decoration:none;color:var(--amber-d);font-weight:500;padding:0 1px}
 .pillar h3,.card h3,h1,h2{hyphens:auto;overflow-wrap:break-word}
 .pillars{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
 .foot .small{color:#cfc9b4}
+.netz{margin-top:2rem}.netz h2{font-size:1.4rem}.netz ul{padding-left:1.2rem}.netz li{margin:.4rem 0}.nl{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line)}.nl h2{font-size:1.2rem;margin:.6rem 0 .2rem}.foot .follow{margin:.8rem 0 .4rem}

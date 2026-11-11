@@ -1,7 +1,7 @@
 // Geplante Artikel (publishedAt in der Zukunft): erscheinen automatisch per Workflow Mo/Mi/Fr 9 Uhr.
 module.exports = [
 {
-  slug: 'prokrastination-warum-wir-aufschieben', pillar: 'selbstfuehrung', sub: 'Impulskontrolle', author: 'sven', publishedAt: '2026-11-13',
+  slug: 'prokrastination-warum-wir-aufschieben', pillar: 'selbstfuehrung', sub: 'Impulskontrolle', author: 'michelle', publishedAt: '2026-11-13',
   title: 'Prokrastination: Warum wir aufschieben und was die Forschung dazu sagt',
   description: 'Aufschieben ist kein Zeitproblem, sondern ein Selbstregulations-Problem. Was eine Meta-Analyse über 691 Zusammenhänge zu Ursachen zeigt und was Du daraus ableiten kannst.',
   keywords: ['Prokrastination', 'Aufschieben', 'Aufschieberitis', 'warum schiebe ich auf', 'Selbstregulation'],
