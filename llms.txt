@@ -1,0 +1,42 @@
+# Selbstfokus
+
+> Selbstfokus ist ein redaktionell unabhängiges Informations- und Entwicklungsportal für Selbstführung und Persönlichkeitsentwicklung. Herausgeber: BA Entertainment. Themen: Selbstführung, Selbstwert, emotionale Kompetenz, Persönlichkeitsentwicklung, Beziehungen und Kommunikation. Keine Diagnosen, keine Heilversprechen. Herausgeber: BA Entertainment, Alleestraße 15, 42781 Haan. Kontakt: info@cogether.de. Stand: 11. November 2026.
+
+## Säulen
+
+- [Selbstführung](https://selbstfokus.de/thema/selbstfuehrung/): Selbstführung verständlich erklärt: Entscheidungen, Impulskontrolle und Verantwortung, mit Studien und Quellen.
+- [Selbstwert](https://selbstfokus.de/thema/selbstwert/): Selbstwert, Selbstannahme, Selbstwirksamkeit und innere Sicherheit: was die Forschung sagt, mit Quellen.
+- [Emotionale Kompetenz](https://selbstfokus.de/thema/emotionale-kompetenz/): Emotionale Kompetenz: Gefühle verstehen, benennen und regulieren. Studien, Strategien und ihre Grenzen.
+- [Persönlichkeitsentwicklung](https://selbstfokus.de/thema/persoenlichkeitsentwicklung/): Persönlichkeitsentwicklung: Wie stabil ist Persönlichkeit, was verändert sich, und was sagen Studien zu Mindset und Veränderung.
+- [Beziehungen und Kommunikation](https://selbstfokus.de/thema/beziehungen-kommunikation/): Beziehungen und Kommunikation: Bindung, Konflikte, Zuhören, Nähe und Distanz. Was die Forschung zeigt, mit Quellen.
+
+## Artikel
+
+- [Big Five: Wie stabil ist Persönlichkeit, und was verändert sich?](https://selbstfokus.de/artikel/big-five-persoenlichkeit-veraendert-sich/): Die fünf Persönlichkeitsdimensionen erklärt und was Meta-Analysen mit über 240.000 Teilnehmenden zu Stabilität und Veränderung im Lebensverlauf zeigen.
+- [Bindungsstile bei Erwachsenen: Was die Forschung sagt](https://selbstfokus.de/artikel/bindungsstile-erwachsene-forschung/): Sicher, vermeidend, ängstlich: Was Bindungsstile sind, wie Hazan und Shaver sie auf Partnerschaften übertrugen und wie stabil sie nach Meta-Analysen sind.
+- [Emotionsregulation: Welche Strategien helfen und welche nicht](https://selbstfokus.de/artikel/emotionsregulation-strategien/): Neubewertung, Ablenkung, Unterdrückung: Was Meta-Analysen zur Wirksamkeit von Emotionsregulation zeigen und warum Unterdrücken nicht gleich Unterdrücken ist.
+- [Entscheidungen treffen: Wenn zu viel Auswahl lähmt](https://selbstfokus.de/artikel/entscheidungen-treffen-zu-viel-auswahl/): Macht mehr Auswahl unzufrieden? Was Studien zu Choice Overload, Maximierern und Zufriedenheit zeigen, und was Dir im Alltag beim Entscheiden helfen kann.
+- [Gefühle benennen: Warum Worte für Gefühle entlasten können](https://selbstfokus.de/artikel/gefuehle-benennen-affect-labeling/): Was passiert im Gehirn, wenn Du ein Gefühl in Worte fasst? Affect Labeling erklärt: Studienlage, Grenzen und eine einfache Alltagsübung ohne Heilsversprechen.
+- [Impulskontrolle verbessern: Was die Forschung zu Selbstkontrolle zeigt](https://selbstfokus.de/artikel/impulskontrolle-verbessern/): Was Impulskontrolle ist, was der Marshmallow-Test wirklich zeigt und warum Wenn-Dann-Pläne in Studien helfen. Mit Quellen und Alltagsfragen.
+- [Selbstwertgefühl: Wie es sich entwickelt und was es bewirkt](https://selbstfokus.de/artikel/selbstwertgefuehl-staerken-was-die-forschung-sagt/): Wie sich das Selbstwertgefühl über das Leben verändert, was hohes Selbstwertgefühl tatsächlich bewirkt und warum bloßes Aufbauen nicht reicht. Mit Studien und Quellen.
+- [Selbstwirksamkeit: Der Glaube, Herausforderungen bewältigen zu können](https://selbstfokus.de/artikel/selbstwirksamkeit-staerken/): Was Selbstwirksamkeit nach Bandura bedeutet, woraus sie entsteht, wie sie gemessen wird und was sie mit Leistung zu tun hat. Mit Studien und Quellen.
+- [Streiten in der Beziehung: Was die Paarforschung über Konflikte zeigt](https://selbstfokus.de/artikel/streiten-in-der-beziehung-was-paarforschung-zeigt/): Ist Streiten normal? Was eine 14-Jahres-Studie von John Gottman und Robert Levenson über Konflikte zeigt und wie Stress Beziehungen belasten kann. Mit Quellen.
+- [Verantwortung übernehmen: Was Kontrollüberzeugung bedeutet](https://selbstfokus.de/artikel/verantwortung-kontrollueberzeugung/): Was Menschen glauben, beeinflussen zu können, prägt ihr Handeln. Locus of Control nach Rotter erklärt, mit Befunden zu 40 Jahren Wandel und ehrlichen Grenzen.
+- [Growth Mindset: Was belegt ist und was übertrieben wurde](https://selbstfokus.de/artikel/wachstums-mindset-was-belegt-ist/): Hilft der Glaube an Entwicklung wirklich? Was Meta-Analysen und eine große Studie mit US-Schüler:innen zum Growth Mindset zeigen, und wo die Grenzen liegen.
+
+## Redaktion
+
+- [Redaktion und Quellen](https://selbstfokus.de/redaktion/): Grundsätze, Quellenauswahl, Abgrenzung zu CoGether.
+- [Autor:innen](https://selbstfokus.de/autoren/): Sven (Gründer, systemischer Coach und Mentor); Angie (Wegbegleiterin und Mentorin); Michelle (Traumasensible Coachin); Kerstin (Coaching für Klarheit und Perspektive).
+- [Glossar](https://selbstfokus.de/glossar/)
+
+## Die CoGether-Welt
+
+- [CoGether](https://cogether.de/): Coaching und Begleitung: Erstgespräche mit Sven, Angie, Michelle, Kerstin und weiteren Coaches.
+- [CoGether Software](https://cogether-software.de/): Coaching-Software für Kund:innen, Termine, Learning, Programme und Vertrieb in einem System.
+- [CoGether für Organisationen](https://business.cogether.de/): Level You Up für Organisationen: Entwicklungsprogramm für Fachkräfte, Ehrenamtliche, Teams und Führungskräfte.
+- [ADHS Begleitung](https://adhsbegleitung.de/): Themenspezifisches Wissensportal zu ADHS bei Erwachsenen, mit Begleitung durch Angie.
+- [Borderline für alle](https://xn--borderlinefralle-tzb.de/): Themenspezifisches Wissensportal zu Borderline für Betroffene und Angehörige.
+- [Guidance Observatory](https://guidanceobservatory.com/): Unabhängiges Fach- und Forschungsportal zur Infrastruktur professioneller Begleitung: Analysen, Marktdaten und offene Datensätze.
+- [Podcast Border Allein](https://borderallein.de/podcast/): Svens Podcast über Borderline, alte Muster, Beziehungen und Selbstführung.
+- [Podcast Gedankenkotze](https://gedankenkotze.de/): Angies Podcast über ADHS, Hochsensibilität, Overthinking und Erschöpfung.

@@ -1,0 +1,44 @@
+name: Artikel veröffentlichen
+# Montag, Mittwoch, Freitag um 9 Uhr deutscher Zeit.
+# Zwei UTC-Zeiten decken Sommer- und Winterzeit ab, ein Zeitcheck lässt nur 9 und 10 Uhr Berliner Zeit durch.
+on:
+  schedule:
+    - cron: '0 7 * * 1,3,5'
+    - cron: '0 8 * * 1,3,5'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Zeit prüfen
+        id: t
+        run: |
+          H=$(TZ=Europe/Berlin date +%H)
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$H" = "09" ] || [ "$H" = "10" ]; then echo "go=1" >> "$GITHUB_OUTPUT"; fi
+      - uses: actions/checkout@v4
+        if: steps.t.outputs.go == '1'
+      - uses: actions/setup-node@v4
+        if: steps.t.outputs.go == '1'
+        with:
+          node-version: 20
+      - name: Seite neu erzeugen (Artikel mit publishedAt bis heute erscheinen)
+        if: steps.t.outputs.go == '1'
+        run: BUILD_DATE=$(TZ=Europe/Berlin date +%F) node gen.cjs
+      - name: Änderungen veröffentlichen
+        if: steps.t.outputs.go == '1'
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "selbstfokus-bot"
+            git config user.email "info@cogether.de"
+            git add -A
+            git commit -m "Geplante Veröffentlichung $(date -u +%F)"
+            git push
+            gh api -X POST repos/${{ github.repository }}/pages/builds || true
+          else
+            echo "Nichts zu veröffentlichen."
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
